@@ -1,0 +1,59 @@
+<!doctype html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .line-clamp {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;  
+          overflow: hidden;
+        }  -      
+    </style>
+</head>
+    <body class="
+        h-screen 
+        w-screen 
+        flex 
+        items-center 
+        justify-center
+        text-center
+        bg-gradient-to-r 
+        from-{{#def.bgfrom || 'gray-800'}} 
+        to-{{#def.bgto || 'gray-800'}} 
+    ">
+        <div class="my-16 mx-32  relative" >
+
+            <!-- <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div> -->
+
+            <div class="relative p-24 bg-white rounded-3xl">
+
+                <h1 class="
+                    text-{{=it.size}} 
+                    text-center 
+                    font-bold 
+                ">
+                    <span class="
+                        bg-clip-text 
+                        text-transparent 
+                        bg-gradient-to-r 
+                        from-{{# def.colorfrom || 'gray-900' }} 
+                        to-{{# def.colorto || 'gray-900' }}
+                    ">
+                        {{=it.title}}
+                    </span>
+                </h1>
+
+                {{ if (it.subtitle) {  }}
+                    <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.subtitle}}</p>
+                {{ } }}
+
+                <div class="flex items-center justify-center text-2xl mt-10">
+                    <img src="https://logo.clearbit.com/{{=it.domain}}" class="h-12 w-12" >
+                    {{=it.domain}}
+                </div>
+
+            </div>
+        </div>        
+    </body>
+</html>

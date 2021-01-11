@@ -8,6 +8,7 @@
 		id="email_address" 
 		bind:value={value}
 		placeholder=""
+		class="w-full"
 	>
 </div>
 

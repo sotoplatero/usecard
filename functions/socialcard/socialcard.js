@@ -14,15 +14,16 @@ exports.handler = async (event, context) => {
         url,
         bg,
         color,
-        size = '6xl',
+        size,
+        theme,
     } = event.queryStringParameters;
 
-    let { bgfrom, bgto } = [bg || 'gray-200.gray-200'].split('_');
-    bgfrom = bgfrom || 'gray-200';
-    colorto = colorto || 'blue-700';
-    colorfrom = colorfrom || 'blue-700';
+    let [ bgfrom, bgto ] = (bg || '').split('_');
+    let [ colorfrom, colorto ] = (color || 'blue-700_blue-700').split('_');
+    size = size || '6xl';
 
-    console.log('bgto:'+colorto)
+    console.log('theme:' + theme)
+
     if ( !url ) return {
         statusCode: 400,
         body: JSON.stringify({ message: 'url parameter not defined' })
@@ -34,7 +35,7 @@ exports.handler = async (event, context) => {
     const description = $('meta[name="description"],meta[property="description"],meta[property="og:description"],meta[name="twitter:description"]').attr('content')
 
     // try {
-        const resolved = path.resolve(__dirname, "./play.html")        
+        const resolved = path.resolve(__dirname, `./${theme}.html`)        
         let tmpl = fs.readFileSync( resolved, "utf8" );
         const view = dot.template(tmpl);
 

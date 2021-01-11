@@ -3,19 +3,22 @@
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
   import SelectTextSize from "./components/select-text-size.svelte";
+  import SelectTheme from "./components/select-theme.svelte";
 
   let url = 'https://stackoverflow.com/questions/21646738/convert-hex-to-rgba';
   let textSize = '';
+  let bg = '';
+  let color = '';
   let bgFrom = '';
   let bgTo = '';
   let colorFrom = '';
   let colorTo = '';
   let pattern = '';
-  let theme = '';
+  let theme = 'play';
 
   let src;
-  $: bg = [bgFrom,bgTo].join('-');
-  $: color = [colorFrom,colorTo].join('-');
+  $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
+  $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
   $: src = `/api/socialcard.jpg?url=${url}&bg=${bg}&color=${color}&&pattern=${pattern}&theme=${theme}&size=${textSize}`
 
@@ -33,8 +36,11 @@
 
 <main class="max-w-screen-lg mx-auto">
 
-    <div class="flex">
+    <div class="flex space-x-4">
+      <div class="flex-grow">
         <InputText bind:value={url} label="URL"/>
+      </div>
+      <SelectTheme bind:value={theme} label="Theme"/>
     </div>
 
     <div class="flex space-x-4">
@@ -52,7 +58,9 @@
                 <SelectColor bind:value={colorTo}/>
             </div>
         </div>
-        <SelectTextSize label="Font Size" bind:value={textSize}/>
+        <div>
+          <SelectTextSize label="Font Size" bind:value={textSize}/>
+        </div>
     </div>
     <div class="mt-10 ">
         <img src="{src}" class="rounded-xl" alt="social card">
