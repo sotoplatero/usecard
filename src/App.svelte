@@ -1,99 +1,64 @@
 <script>
   import { dark } from "./store"; // dark mode
+  import InputText from "./components/input.svelte"; 
+  import SelectColor from "./components/select-color.svelte";
+  import SelectTextSize from "./components/select-text-size.svelte";
 
-  import AppearanceToggler from "./AppearanceToggler.svelte";
+  let url = 'https://stackoverflow.com/questions/21646738/convert-hex-to-rgba';
+  let textSize = '';
+  let bgFrom = '';
+  let bgTo = '';
+  let colorFrom = '';
+  let colorTo = '';
+  let pattern = '';
+  let theme = '';
 
-  export let title;
+  let src;
+  $: bg = [bgFrom,bgTo].join('-');
+  $: color = [colorFrom,colorTo].join('-');
 
-  const colors = [
-    "gray",
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "teal",
-    "blue",
-    "indigo",
-    "purple",
-    "pink"
-  ];
-  const shades = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+  $: src = `/api/socialcard.jpg?url=${url}&bg=${bg}&color=${color}&&pattern=${pattern}&theme=${theme}&size=${textSize}`
 
-  let color = randomColor();
-  let shade = randomShade();
-
-  function clickMe() {
-    color = randomColor();
-    shade = randomShade();
-  }
-
-  function randomColor() {
-    return colors[randomRange(0, colors.length - 1)];
-  }
-
-  function randomShade() {
-    return shades[randomRange(0, shades.length - 1)];
-  }
-
-  function randomRange(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
 </script>
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>
-
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
-<main
-  class="bg-gradient-to-br"
-  class:dark
-  class:from-blue-700={$dark}
-  class:to-purple-800={$dark}
-  class:from-yellow-200={!$dark}
-  class:to-pink-300={!$dark}>
-  <div class="flex flex-col items-center justify-center min-h-screen space-y-8">
-    <div class:text-pink-100={$dark} class:text-pink-900={!$dark}>
-      <h1 class="hello leading-tight">{title}</h1>
-      Visit the
-      <a
-        href="https://svelte.dev/tutorial"
-        class="border-b-4 border-dashed border-opacity-30
-        hover:border-opacity-100"
-        class:border-pink-100={$dark}
-        class:border-pink-900={!$dark}>
-        Svelte tutorial
-      </a>
-      to learn how to build Svelte apps.
+<header class="my-40">
+    <h1 class="text-4xl md:text-6xl text-center text-dark-blue-800 font-headline leading-tight" >
+        Auto Social Image
+    </h1>
+    <p class="pt-6 text-lg max-w-2xl mx-auto text-gray-700 leading-relaxed text-center">
+        You put all your work into creating an awesome Open Source package - now it's time to make it shine! Use this generator to create beautiful looking social images for your package.
+    </p>
+</header>
+
+<main class="max-w-screen-lg mx-auto">
+
+    <div class="flex">
+        <InputText bind:value={url} label="URL"/>
     </div>
-    <div class="flex items-center">
-      <AppearanceToggler />
+
+    <div class="flex space-x-4">
+        <div>
+            <label class="block font-semibold">Backgroud color</label>        
+            <div class="flex space-x-1">
+                <SelectColor bind:value={bgFrom} />
+                <SelectColor bind:value={bgTo} />
+            </div>
+        </div>
+        <div>
+            <label class="block font-semibold">Text color</label>        
+            <div class="flex space-x-1">
+                <SelectColor bind:value={colorFrom}/>
+                <SelectColor bind:value={colorTo}/>
+            </div>
+        </div>
+        <SelectTextSize label="Font Size" bind:value={textSize}/>
     </div>
-    <div
-      class="border-4 border-dashed max-w-sm p-4 rounded-lg space-y-2 {`border-${color}-${shade}`}">
-      <p class:text-pink-100={$dark} class:text-pink-900={!$dark}>
-        This next button demonstrates the use of
-        <span class="highlight">@apply</span>
-        . See
-        <span class="highlight">global.css</span>
-        for examples.
-      </p>
-      <button type="button" class="custom-btn" on:click={() => clickMe()}>
-        Click Me
-      </button>
+    <div class="mt-10 ">
+        <img src="{src}" class="rounded-xl" alt="social card">
     </div>
-  </div>
 </main>
+
+<footer class="mt-10">
+    
+</footer>
