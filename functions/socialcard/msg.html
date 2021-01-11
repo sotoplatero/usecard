@@ -19,8 +19,8 @@
         justify-center
         text-center
         bg-gradient-to-r 
-        from-{{#def.bgfrom || 'gray-800'}} 
-        to-{{#def.bgto || 'gray-800'}} 
+        from-{{= it.bgfrom || 'gray-800'}} 
+        to-{{= it.bgto || 'gray-800'}} 
     ">
         <div class="my-16 mx-32  relative" >
 
@@ -37,8 +37,8 @@
                         bg-clip-text 
                         text-transparent 
                         bg-gradient-to-r 
-                        from-{{# def.colorfrom || 'gray-900' }} 
-                        to-{{# def.colorto || 'gray-900' }}
+                        from-{{= it.colorfrom || 'gray-900' }} 
+                        to-{{= it.colorto || 'gray-900' }}
                     ">
                         {{=it.title}}
                     </span>
