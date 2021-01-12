@@ -2,12 +2,10 @@
 	{#if label}
 		<label for="email_address" class="block text-gray-700 ">{label}</label>
 	{/if}
-	<select bind:value={value} class="bg-{value} {cl}">
+	<select bind:value={value} class="bg-{value} w-full">
 		<option></option>
 		{#each colors as color}
-			<option value={Object.keys(color)} class="bg-{ Object.keys(color) }">
-				{ Object.values(color) }
-			</option>
+			<option value={Object.keys(color)} class="bg-{ Object.keys(color) }">&nbsp;</option>
 		{/each}
 	</select>
 </div>

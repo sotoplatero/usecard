@@ -25,7 +25,7 @@
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
-<header class="my-40">
+<header class="mt-32 mb-10">
     <h1 class="text-4xl md:text-6xl text-center text-dark-blue-800 font-headline leading-tight" >
         Auto Social Image
     </h1>
@@ -34,39 +34,41 @@
     </p>
 </header>
 
-<main class="max-w-screen-lg mx-auto">
+<main class="max-w-screen-lg mx-auto px-4">
 
-    <div class="flex space-x-4">
-      <div class="flex-grow">
+    <div class="grid grid-cols-3 lg:grid-cols-7 gap-4">
+
+      <div class="md:col-span-4 col-span-3">
         <InputText bind:value={url} label="URL"/>
       </div>
+
       <SelectTheme bind:value={theme} label="Theme"/>
+
+      <div>
+          <label class="block font-semibold">Backgroud color</label>        
+          <div class="flex space-x-1">
+              <SelectColor bind:value={bgFrom} />
+              <SelectColor bind:value={bgTo} />
+          </div>
+      </div>
+
+      <div>
+          <label class="block font-semibold">Text color</label>        
+          <div class="flex space-x-1">
+              <SelectColor bind:value={colorFrom}/>
+              <SelectColor bind:value={colorTo}/>
+          </div>
+      </div>
     </div>
 
-    <div class="flex space-x-4">
-        <div>
-            <label class="block font-semibold">Backgroud color</label>        
-            <div class="flex space-x-1">
-                <SelectColor bind:value={bgFrom} />
-                <SelectColor bind:value={bgTo} />
-            </div>
-        </div>
-        <div>
-            <label class="block font-semibold">Text color</label>        
-            <div class="flex space-x-1">
-                <SelectColor bind:value={colorFrom}/>
-                <SelectColor bind:value={colorTo}/>
-            </div>
-        </div>
-        <div>
-          <SelectTextSize label="Font Size" bind:value={textSize}/>
-        </div>
-    </div>
     <div class="mt-10 ">
+      <a href="{src}" title="Social Image" target="_blank">
         <img src="{src}" class="rounded-xl" alt="social card">
+      </a>
     </div>
+
 </main>
 
-<footer class="mt-10">
-    
+<footer class="my-10 text-center">
+    Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a>
 </footer>

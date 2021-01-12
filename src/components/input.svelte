@@ -1,6 +1,6 @@
 <div class="">
 	{#if label}
-		<label for="email_address" class="block text-gray-700">{label}</label>
+		<label for="email_address" class="block text-gray-700 font-semibold">{label}</label>
 	{/if}
 	<input 
 		type="text" 

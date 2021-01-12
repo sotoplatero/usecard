@@ -23,8 +23,8 @@
         justify-center
         text-center
         bg-gradient-to-r 
-        from-{{=it.bgfrom}} 
-        to-{{=it.bgto}} 
+        from-{{= it.bgfrom || 'gray-200' }} 
+        to-{{= it.bgto || 'gray-200' }} 
     ">
         <div class="my-16 mx-32  relative" >
 
@@ -35,7 +35,7 @@
                 <img src="https://logo.clearbit.com/{{=it.domain}}" class="h-24 w-24 mx-auto rounded-lg" >
 
                 <h1 class="
-                    text-{{=it.size}} 
+                    text-{{= it.size || '6xl' }} 
                     text-center 
                     font-bold 
                 ">
@@ -43,8 +43,8 @@
                         bg-clip-text 
                         text-transparent 
                         bg-gradient-to-r 
-                        from-{{=it.colorfrom}} 
-                        to-{{=it.colorto}}
+                        from-{{= it.colorfrom || 'blue-700'}} 
+                        to-{{= it.colorto || 'blue-700' }}
                     ">
                         {{=it.title}}
                     </span>

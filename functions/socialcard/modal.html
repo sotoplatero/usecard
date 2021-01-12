@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .line-clamp {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;  
+          overflow: hidden;
+        }  -      
+    </style>
+</head>
+    <body class="
+        h-screen 
+        w-screen 
+        flex 
+        items-center 
+        justify-center
+        bg-gradient-to-r 
+        from-{{= it.bgfrom || 'gray-100' }} 
+        to-{{= it.bgto || 'gray-100' }} 
+    ">
+
+        <div class="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-screen-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-white px-8 py-10">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-18 w-18 rounded-full sm:mx-0">
+                    <img src="https://logo.clearbit.com/{{=it.domain}}" class="h-17 w-17">
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <h3 class="text-{{= it.size || '5xl' }} font-medium text-gray-900" id="modal-headline">
+                    {{= it.title}}
+                  </h3>
+                  <div class="mt-4">
+                    <p class="text-sm text-gray-500 text-2xl">
+                      {{= it.description || ''}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 px-8 flex sm:flex-row-reverse">
+              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-3 bg-red-600 text-base font-medium text-white outline-none ring-2 ring-offset-2 ring-red-500 sm:ml-6 sm:w-auto text-xl">
+                View
+              </button>
+              <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-6 py-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto text-xl">
+                Ok
+              </button>
+            </div>
+          </div>
+
+
+
+<!--  -->     
+    </body>
+</html>

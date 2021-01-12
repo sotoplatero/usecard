@@ -17,40 +17,31 @@
         flex 
         items-center 
         justify-center
-        text-center
-        bg-gradient-to-r 
-        from-{{=it.bgfrom || 'bg-white'}} 
-        to-{{=it.bgto || 'bg-white'}} 
-    ">
+        ">
         <div class="my-16 mx-32  relative" >
 
-            <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div>
+            <!-- <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div> -->
 
-            <div class="relative p-24 bg-white border-2 border-gray-500 ">
+            <div class="relative w-full p-24 bg-{{= it.bgfrom || 'yellow-200' }} border-{{= it.bgto || 'yellow-500' }} border-b-8 ">
 
                 <h1 class="
-                    text-{{= it.size || '6xl'}} 
-                    text-center 
+                    text-{{= it.size || '6xl' }} 
                     font-bold 
                 ">
                     <span class="
                         bg-clip-text 
                         text-transparent 
                         bg-gradient-to-r 
-                        from-{{= it.colorfrom || 'gray-700' }} 
-                        to-{{= it.colorto || 'gray-700' }}
+                        from-{{= it.colorfrom || 'gray-900' }} 
+                        to-{{= it.colorto || 'gray-900' }}
                     ">
-                        {{=it.title}}
+                        &#10077;{{= it.title }}&#10078;
                     </span>
                 </h1>
 
-                {{ if (it.subtitle) {  }}
-                    <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.subtitle}}</p>
-                {{ } }}
-
-                <div class="flex items-center justify-center text-2xl mt-10">
-                    <img src="https://logo.clearbit.com/{{=it.domain}}" class="h-12 w-12" >
-                    {{= it.publisher || it.domain }}
+                <div class="text-right text-xl mt-10 ">
+                    <span class="">&mdash;<span>
+                    <i>{{= it.publisher || it.domain }}</i>
                 </div>
 
             </div>
