@@ -46,7 +46,7 @@
 
       <div>
           <label class="block font-semibold">Backgroud color</label>        
-          <div class="flex space-x-1">
+          <div class="grid grid-cols-2 gap-1">
               <SelectColor bind:value={bgFrom} />
               <SelectColor bind:value={bgTo} />
           </div>
@@ -54,7 +54,7 @@
 
       <div>
           <label class="block font-semibold">Text color</label>        
-          <div class="flex space-x-1">
+          <div class="grid grid-cols-2 gap-1">
               <SelectColor bind:value={colorFrom}/>
               <SelectColor bind:value={colorTo}/>
           </div>
