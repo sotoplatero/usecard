@@ -37,8 +37,8 @@
                         bg-clip-text 
                         text-transparent 
                         bg-gradient-to-r 
-                        from-{{=it.colorfrom}} 
-                        to-{{=it.colorto}}
+                        from-{{= it.colorfrom || 'blue-700' }} 
+                        to-{{= it.colorto || 'blue-700' }}
                     ">
                         {{=it.title}}
                     </span>

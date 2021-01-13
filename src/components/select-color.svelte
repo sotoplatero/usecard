@@ -1,12 +1,12 @@
-<div>
+<div class="w-full">
 	{#if label}
-		<label for="email_address" class="block text-gray-700 ">{label}</label>
+		<label for="" class="block text-gray-700 font-semibold">{label}</label>
 	{/if}
-	<select bind:value={value} class="bg-{value} {cl}">
+	<select bind:value={value} class="w-full bg-{value}" >
 		<option></option>
 		{#each colors as color}
 			<option value={Object.keys(color)} class="bg-{ Object.keys(color) }">
-				{ Object.values(color) }
+				&nbsp;
 			</option>
 		{/each}
 	</select>

@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
     } = event.queryStringParameters;
 
     let [ bgfrom, bgto ] = (bg || '').split('_');
-    let [ colorfrom, colorto ] = (color || 'blue-700_blue-700').split('_');
+    let [ colorfrom, colorto ] = (color || '').split('_');
     size = size || '6xl';
 
     console.log('theme:' + theme)
