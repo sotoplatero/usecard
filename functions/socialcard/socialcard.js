@@ -71,7 +71,7 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             headers: { 
             	'Content-type': 'image/jpeg', 
-            	'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000' 
+            	// 'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000' 
             },
             body: screenshot,   
             isBase64Encoded: true            
