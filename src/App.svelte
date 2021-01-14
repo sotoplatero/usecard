@@ -20,60 +20,76 @@
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = `/api/socialcard.jpg?url=${url}&bg=${bg}&color=${color}&&pattern=${pattern}&theme=${theme}&size=${textSize}`
+  $: src = encodeURI(`/card.jpg?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
 
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
-<div class="w-3/5 max-w-screen-lg mx-auto">
+<header class="max-w-3xl h-screen min-h-screen mx-auto flex items-center ">
+  <div class="text-center">
     
-    <header class="mt-32">
-        <h1 class="text-4xl md:text-5xl text-center text-gray-800 font-bold" >
-            Auto Social Image
-        </h1>
-        <p class="pt-6 text-lg max-w-2xl mx-auto text-gray-600 leading-relaxed text-center">
-            You put all your work into creating an awesome Open Source package - now it's time to make it shine! Use this generator to create beautiful looking social images for your package.
-        </p>
-    </header>
+    <h1 class="text-4xl md:text-5xl text-dark-blue-800 font-bold" >
+        <span class="text-red-600">USECARD</span><br> Auto Social Image
+    </h1>
+    <div class="max-w-2xl mx-auto pt-8 text-xl text-gray-700 leading-relaxed space-y-6">
+      <p >
+          Generator of social meta images with 0 configuration. You no longer have to waste time creating images. 
+      </p>
+      <p >
+       An image for each web page only indicates the url and has the <code class="bg-gray-100">content</code> for <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
+        Ex. <a href="/card.jpg?url=https://socialcard.dsoto.dev" class="bg-gray-100 text-blue-600 text-xl">https://usecard.netlify.app/card.jpg?url=https://usecard.netlify.app</a>
+      </p>
+      
+    </div>
+    <div class="mt-10">
+        <a href="#builder" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-semibold text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-xl">
+          Build URL
+        </a>
+<!--         <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-semibold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-xl">
+          Details
+        </button> -->
+    </div>
+  </div>
+</header>
 
-    <main class="space-y-4">
+<main id="builder" class="max-w-3xl mx-auto space-y-6">
 
-        <div class="flex space-x-4">
-          <div class="flex-grow">
-            <InputText bind:value={url} label="URL"/>
+    <div class="grid grid-cols-3 gap-2">
+
+      <div class="col-span-3">
+        <InputText bind:value={url} label="URL"/>
+      </div>
+
+      <SelectTheme bind:value={theme} label="Theme"/>
+
+      <div>
+          <label class="block font-semibold">Backgroud color</label>        
+          <div class="grid grid-cols-2 gap-1">
+              <SelectColor bind:value={bgFrom} />
+              <SelectColor bind:value={bgTo} />
           </div>
-        </div>
+      </div>
 
-        <div class="grid grid-cols-4 space-x-4">
-            <div >
-                <SelectTheme bind:value={theme} label="Theme"/>
-            </div>
-            <div >
-              <SelectTextSize label="Text Size" bind:value={textSize}/>
-            </div>
-            <div>
-                <label class="block font-semibold">Text color</label>        
-                <div class="flex space-x-1">
-                    <SelectColor bind:value={colorFrom}/>
-                    <SelectColor bind:value={colorTo}/>
-                </div>
-            </div>
-            <div>
-                <label class="block font-semibold">Backgroud color</label>        
-                <div class="flex space-x-1">
-                    <SelectColor bind:value={bgFrom} />
-                    <SelectColor bind:value={bgTo} />
-                </div>
-            </div>
-        </div>
-        <div class="">
-            <a href="{src}">
-                <img src="{src}" class="rounded-xl" alt="social card">
-            </a>
-        </div>
-    </main>
+      <div>
+          <label class="block font-semibold">Text color</label>        
+          <div class="grid grid-cols-2 gap-1">
+              <SelectColor bind:value={colorFrom}/>
+              <SelectColor bind:value={colorTo}/>
+          </div>
+      </div>
+    </div>
 
-    <footer class="my-10">
-        Made with <span class="text-xl">&#9996;</span> by <a href="https://twitter.com/sotoplatero" class="text-blue-600">@sotoplatero</a>
-    </footer>
-</div>
+    <div class="">
+      <a href="{src}" title="Social Image" target="_blank">
+        <img src="{src}" class="rounded-xl" alt="social card">
+      </a>
+    </div>
+
+    <div class="p-3 bg-gray-100">
+      <a href="http://usecard.netlify.app{src}">http://usecard.netlify.app{src}</a>
+    </div>
+</main>
+
+<footer class="my-8 text-center">
+    Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a>
+</footer>

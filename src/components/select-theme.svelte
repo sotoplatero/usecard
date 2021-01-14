@@ -15,5 +15,5 @@
 	export let 
 		label = '', 
 		value;
-	let themes = [ 'play' ,'frame', 'box' ];
+	let themes = [ 'play' ,'frame', 'box', 'quote', 'modal' ];
 </script>

@@ -2,12 +2,10 @@
 	{#if label}
 		<label for="" class="block text-gray-700 font-semibold">{label}</label>
 	{/if}
-	<select bind:value={value} class="w-full bg-{value}" >
+	<select bind:value={value} class="bg-{value} w-full">
 		<option></option>
 		{#each colors as color}
-			<option value={Object.keys(color)} class="bg-{ Object.keys(color) }">
-				&nbsp;
-			</option>
+			<option value={Object.keys(color)} class="bg-{ Object.keys(color) }">&nbsp;</option>
 		{/each}
 	</select>
 </div>
@@ -16,7 +14,7 @@
 	export let 
 		label = '', 
 		cl = '', 
-		value;
+		value ;
 
 	let colors = [
 		{'gray-50': '#F9FAFB'},

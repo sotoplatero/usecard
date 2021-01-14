@@ -43,16 +43,16 @@
                         bg-clip-text 
                         text-transparent 
                         bg-gradient-to-r 
-                        from-{{= it.colorfrom || 'blue-700' }} 
+                        from-{{= it.colorfrom || 'blue-700'}} 
                         to-{{= it.colorto || 'blue-700' }}
                     ">
-                        {{=it.title}}
+                        {{= it.title }}
                     </span>
                 </h1>
 
-                {{ if (it.subtitle) {  }}
-                    <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.subtitle}}</p>
-                {{ } }}
+                {{? it.description }}
+                    <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.description}}</p>
+                {{?}}
 
             </div>
         </div>        
