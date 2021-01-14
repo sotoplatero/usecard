@@ -47,8 +47,9 @@ exports.handler = async (event, context) => {
             colorfrom: colorfrom, 
             domain: URL.parse(url).hostname 
         };
-        console.log(metas);
+
         const content = view(metas)
+        
         const browser = await chromium.puppeteer.launch({
             ignoreDefaultArgs: ['--disable-extensions'],
             args: chromium.args,
