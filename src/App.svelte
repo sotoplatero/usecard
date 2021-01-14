@@ -1,5 +1,6 @@
 <script>
   // import { dark, theme } from "./store"; // dark mode
+  import { toClipboard } from "copee";
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
   import SelectTextSize from "./components/select-text-size.svelte";
@@ -30,7 +31,7 @@
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
-<header class="max-w-4xl h-screen min-h-screen mx-auto flex items-center justify-center ">
+<header class="max-w-4xl h-screen min-h-screen mx-auto flex items-center justify-center px-4">
   <div class="text-center">
     
     <h1 class="text-4xl md:text-5xl text-dark-blue-800 font-bold" >
@@ -41,7 +42,7 @@
           Generator of social meta images with 0 configuration. You no longer have to waste time creating images. 
       </p>
       <p >
-       An image for each web page, only indicates the url parameter and set the <code class="bg-gray-100">content</code> for <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
+       An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
         Ex. <a href="/card.jpg?url=https://usecard.netlify.app" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card.jpg?url=https://usecard.netlify.app</a>
       </p>
       
@@ -54,7 +55,7 @@
   </div>
 </header>
 
-<div class="h-screen min-h-screen py-8">
+<div class="h-screen min-h-screen py-8 px-4">
   <main id="builder" class="max-w-4xl mx-auto space-y-6 ">
       <div class="text-center">
         <h2 class="text-2xl md:text-3xl font-bold">Customize your Image</h2>
@@ -92,18 +93,23 @@
             class="rounded-xl absolute h-full w-full object-cover" 
             alt="social card"
             use:loader
-            style="{ loading ? 'filter: blur(5px);' : '' }"
+            style="{ loading ? 'filter: blur(8px);' : '' }"
           >
 
         </a>
       </div>
 
-      <div class="p-3 bg-gray-100 rounded-lg font-semibold">
-        http://usecard.netlify.app{src}
+      <div class="py-3 px-4 bg-gray-100 rounded-lg flex items-center text-gray-500">
+        <span>http://usecard.netlify.app{src}</span> 
+        <button on:click="{toClipboard( 'http://usecard.netlify.app' + src ) }" class="hover:text-gray-800">
+          <svg class="h-6 w-6 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+        </button>
       </div>
   </main>
 
-  <footer class="my-8 text-center">
+  <footer class="my-8 text-center px-4">
       Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a>
   </footer>
   
