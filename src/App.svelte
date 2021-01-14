@@ -6,7 +6,7 @@
   import SelectTextSize from "./components/select-text-size.svelte";
   import SelectTheme from "./components/select-theme.svelte";
 
-  let url = 'https://stackoverflow.com/questions/21646738/convert-hex-to-rgba';
+  let url = 'https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la';
   let loading = false;
   let textSize = '';
   let bg = '';
