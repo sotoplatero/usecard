@@ -1,11 +1,12 @@
 <script>
-  import { dark } from "./store"; // dark mode
+  // import { dark, theme } from "./store"; // dark mode
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
   import SelectTextSize from "./components/select-text-size.svelte";
   import SelectTheme from "./components/select-theme.svelte";
 
   let url = 'https://stackoverflow.com/questions/21646738/convert-hex-to-rgba';
+  let loading = false;
   let textSize = '';
   let bg = '';
   let color = '';
@@ -21,7 +22,11 @@
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
   $: src = encodeURI(`/card.jpg?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
+  $: src && (loading = true);
 
+  function loader(img) {
+    img.onload = () => (loading = false);
+  }
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
@@ -80,9 +85,16 @@
         </div>
       </div>
 
-      <div class="">
-        <a href="{src}" title="Social Image" target="_blank">
-          <img src="{src}" class="rounded-xl" alt="social card">
+      <div class="border rounded-xl overflow-hidden">
+        <a href="{src}" title="Social Image" target="_blank" class="relative pb-1/2 block">
+          <img 
+            {src}
+            class="rounded-xl absolute h-full w-full object-cover" 
+            alt="social card"
+            use:loader
+            style="{ loading ? 'filter: blur(5px);' : '' }"
+          >
+
         </a>
       </div>
 
