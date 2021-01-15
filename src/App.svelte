@@ -91,5 +91,6 @@
 </main>
 
 <footer class="my-8 text-center">
-    Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a>
+    Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a><br>
+    <a href="https://clearbit.com" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
 </footer>
