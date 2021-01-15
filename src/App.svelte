@@ -43,7 +43,7 @@
       </p>
       <p >
        An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
-        Ex. <a href="/card.jpg?url=https://usecard.netlify.app" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card.jpg?url=https://usecard.netlify.app</a>
+        Ex. <a href="/card.jpg?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card.jpg?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la</a>
       </p>
       
     </div>
