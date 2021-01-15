@@ -47,8 +47,9 @@ exports.handler = async (event, context) => {
             colorfrom: colorfrom, 
             domain: URL.parse(url).hostname 
         };
-        console.log(metas);
+
         const content = view(metas)
+        
         const browser = await chromium.puppeteer.launch({
             ignoreDefaultArgs: ['--disable-extensions'],
             args: chromium.args,
@@ -70,7 +71,7 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             headers: { 
             	'Content-type': 'image/jpeg', 
-            	'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000' 
+            	// 'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000' 
             },
             body: screenshot,   
             isBase64Encoded: true            

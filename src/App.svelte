@@ -1,11 +1,13 @@
 <script>
-  import { dark } from "./store"; // dark mode
+  // import { dark, theme } from "./store"; // dark mode
+  import { toClipboard } from "copee";
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
   import SelectTextSize from "./components/select-text-size.svelte";
   import SelectTheme from "./components/select-theme.svelte";
 
-  let url = 'https://stackoverflow.com/questions/21646738/convert-hex-to-rgba';
+  let url = 'https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la';
+  let loading = false;
   let textSize = '';
   let bg = '';
   let color = '';
@@ -21,11 +23,15 @@
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
   $: src = encodeURI(`/card.jpg?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
+  $: src && (loading = true);
 
+  function loader(img) {
+    img.onload = () => (loading = false);
+  }
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
-<header class="max-w-3xl h-screen min-h-screen mx-auto flex items-center ">
+<header class="max-w-4xl h-screen min-h-screen mx-auto flex items-center justify-center px-4">
   <div class="text-center">
     
     <h1 class="text-4xl md:text-5xl text-dark-blue-800 font-bold" >
@@ -36,8 +42,8 @@
           Generator of social meta images with 0 configuration. You no longer have to waste time creating images. 
       </p>
       <p >
-       An image for each web page only indicates the url and has the <code class="bg-gray-100">content</code> for <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
-        Ex. <a href="/card.jpg?url=https://socialcard.dsoto.dev" class="bg-gray-100 text-blue-600 text-xl">https://usecard.netlify.app/card.jpg?url=https://usecard.netlify.app</a>
+       An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
+        Ex. <a href="/card.jpg?url=https://usecard.netlify.app" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card.jpg?url=https://usecard.netlify.app</a>
       </p>
       
     </div>
@@ -45,52 +51,71 @@
         <a href="#builder" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-semibold text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-xl">
           Build URL
         </a>
-<!--         <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-semibold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-xl">
-          Details
-        </button> -->
     </div>
   </div>
 </header>
 
-<main id="builder" class="max-w-3xl mx-auto space-y-6">
+<div class="h-screen min-h-screen py-8 px-4">
 
-    <div class="grid grid-cols-3 gap-2">
+  <main id="builder" class="max-w-4xl mx-auto space-y-6 ">
 
-      <div class="col-span-3">
-        <InputText bind:value={url} label="URL"/>
+      <div class="text-center">
+        <h2 class="text-2xl md:text-3xl font-bold">Customize your Image</h2>
+        <p class="text-lg">Generate the URL of the custom image. You can change the colors, create gradients and select the theme of your preference.</p>
       </div>
 
-      <SelectTheme bind:value={theme} label="Theme"/>
+      <div class="grid grid-cols-3 gap-2">
 
-      <div>
-          <label class="block font-semibold">Backgroud color</label>        
-          <div class="grid grid-cols-2 gap-1">
-              <SelectColor bind:value={bgFrom} />
-              <SelectColor bind:value={bgTo} />
-          </div>
+        <div class="col-span-3">
+          <InputText bind:value={url} label="URL"/>
+        </div>
+
+        <SelectTheme bind:value={theme} label="Theme"/>
+
+        <div>
+            <label for="bgcolor" class="block font-semibold">Backgroud color</label>        
+            <div class="grid grid-cols-2 gap-1">
+                <SelectColor bind:value={bgFrom} name="bgcolor"/>
+                <SelectColor bind:value={bgTo} />
+            </div>
+        </div>
+
+        <div>
+            <label for="textcolor" class="block font-semibold">Text color</label>        
+            <div class="grid grid-cols-2 gap-1">
+                <SelectColor bind:value={colorFrom} name="textcolor" />
+                <SelectColor bind:value={colorTo} name="textcolor"/>
+            </div>
+        </div>
+
       </div>
 
-      <div>
-          <label class="block font-semibold">Text color</label>        
-          <div class="grid grid-cols-2 gap-1">
-              <SelectColor bind:value={colorFrom}/>
-              <SelectColor bind:value={colorTo}/>
-          </div>
+      <div class="border rounded-xl overflow-hidden">
+        <a href="{src}" title="Social Image" target="_blank" class="relative pb-1/2 block">
+          <img 
+            {src}
+            class="rounded-xl absolute h-full w-full object-cover" 
+            alt="social card"
+            use:loader
+            style="{ loading ? 'filter: blur(8px);' : '' }"
+          >
+
+        </a>
       </div>
-    </div>
 
-    <div class="">
-      <a href="{src}" title="Social Image" target="_blank">
-        <img src="{src}" class="rounded-xl" alt="social card">
-      </a>
-    </div>
+      <div class="py-3 px-4 bg-gray-100 rounded-lg flex items-center text-gray-500">
+        <span>http://usecard.netlify.app{src}</span> 
+        <button on:click="{toClipboard( 'http://usecard.netlify.app' + src ) }" class="hover:text-gray-800">
+          <svg class="h-6 w-6 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+        </button>
+      </div>
+  </main>
 
-    <div class="p-3 bg-gray-100">
-      <a href="http://usecard.netlify.app{src}">http://usecard.netlify.app{src}</a>
-    </div>
-</main>
+  <footer class="my-8 text-center">
+      Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a><br>
+      <a href="https://clearbit.com" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
+  </footer>
 
-<footer class="my-8 text-center">
-    Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a><br>
-    <a href="https://clearbit.com" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
-</footer>
+</div>

@@ -29,9 +29,10 @@
             <div class="relative p-24 bg-white rounded-3xl">
 
                 <h1 class="
-                    text-{{=it.size}} 
+                    text-{{= it.size || '6xl' }} 
                     text-center 
                     font-bold 
+                    leading-normal
                 ">
                     <span class="
                         bg-clip-text 
@@ -40,17 +41,17 @@
                         from-{{= it.colorfrom || 'gray-900' }} 
                         to-{{= it.colorto || 'gray-900' }}
                     ">
-                        {{=it.title}}
+                        {{= it.title}}
                     </span>
                 </h1>
 
-                {{ if (it.subtitle) {  }}
+                {{? it.subtitle }}
                     <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.subtitle}}</p>
-                {{ } }}
+                {{?}}
 
-                <div class="flex items-center justify-center text-2xl mt-10">
+                <div class="flex items-center justify-center text-4xl mt-10">
                     <img src="https://logo.clearbit.com/{{=it.domain}}" class="h-12 w-12" >
-                    {{=it.domain}}
+                    {{= it.publisher || it.domain}}
                 </div>
 
             </div>

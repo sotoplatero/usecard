@@ -27,6 +27,7 @@
                 <h1 class="
                     text-{{= it.size || '6xl' }} 
                     font-bold 
+                    leading-normal
                 ">
                     <span class="
                         bg-clip-text 
@@ -35,11 +36,11 @@
                         from-{{= it.colorfrom || 'gray-900' }} 
                         to-{{= it.colorto || 'gray-900' }}
                     ">
-                        &#10077;{{= it.title }}&#10078;
+                        &#8220; {{= it.title }} &#8221;
                     </span>
                 </h1>
 
-                <div class="text-right text-xl mt-10 ">
+                <div class="text-right text-3xl mt-10 ">
                     <span class="">&mdash;<span>
                     <i>{{= it.publisher || it.domain }}</i>
                 </div>
