@@ -1,5 +1,10 @@
 <div class="w-full">
-	<select bind:value={value} class="bg-{value} w-full" {name}>
+	<select 
+		bind:value={value} 
+		class="w-full" 
+		style="background-color: {bgColor};" 
+		{name}
+	>
 		<option></option>
 		{#each colors as color}
 			<option value={color} style="background-color: {color[0]};">&nbsp;</option>
@@ -9,6 +14,11 @@
 
 <script>
 	export let value, name ;
+
+	function bgColor(){
+		let findedColor = color.find(el => el[1]===value)
+		return findedColor ? findedColor[0] : '#fff';
+	}
 
 	let colors = [
 		['#F9FAFB','gray-50'],
