@@ -3,22 +3,17 @@
 		bind:value={value} 
 		class="w-full" 
 		style="background-color: {bgColor};" 
-		{name}
+		name={name}
 	>
 		<option></option>
 		{#each colors as color}
-			<option value={color} style="background-color: {color[0]};">&nbsp;</option>
+			<option value={color[1]} style="background-color: {color[0]};">&nbsp;</option>
 		{/each}
 	</select>
 </div>
 
 <script>
 	export let value, name ;
-
-	function bgColor(){
-		let findedColor = color.find(el => el[1]===value)
-		return findedColor ? findedColor[0] : '#fff';
-	}
 
 	let colors = [
 		['#F9FAFB','gray-50'],
@@ -102,4 +97,8 @@
 		['#9D174D','pink-800'],
 		['#831843','pink-900'],		
 	];
+
+	$: bgColor = colors.some(el => el[1]==value) ?  colors.find(el => el[1]==value)[0] : '#fff';
+	$: console.log( value )
+
 </script>
