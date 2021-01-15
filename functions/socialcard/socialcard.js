@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
     const { body } = await got( url );
     const $ = cheerio.load( body );
 
-    // try {
+    try {
         const resolved = path.resolve(__dirname, `./${theme}.html`)        
         let tmpl = fs.readFileSync( resolved, "utf8" );
         const view = dot.template(tmpl);
@@ -71,19 +71,19 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             headers: { 
             	'Content-type': 'image/jpeg', 
-                'Cache-Control': 'no-store'
+                'Cache-Control': 'no-store',
             },
             body: screenshot,   
             isBase64Encoded: true            
         }     
 
-    // } catch (e) {
+    } catch (e) {
 
-    //     return {
-    //         headers: { 'Content-Type':'application/json'},            
-    //         statusCode: 500,
-    //         body: JSON.stringify({ message: 'Error' }),   
-    //     }     
+        return {
+            headers: { 'Content-Type':'application/json'},            
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Error' }),   
+        }     
 
-    // }
+    }
 }

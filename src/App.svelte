@@ -22,7 +22,7 @@
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = encodeURI(`/card.jpg?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
+  $: src = encodeURI(`/card?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
   $: src && (loading = true);
 
   function loader(img) {
@@ -43,7 +43,7 @@
       </p>
       <p >
        An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
-        Ex. <a href="/card.jpg?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card.jpg?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la</a>
+        Ex. <a href="/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la</a>
       </p>
       
     </div>
@@ -115,7 +115,7 @@
 
   <footer class="my-8 text-center">
       Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a><br>
-      <a href="https://clearbit.com" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
+      <a href="https://clearbit.com" target="_black" rel="noreferer noopnener" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
   </footer>
 
 </div>

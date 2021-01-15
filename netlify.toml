@@ -7,7 +7,7 @@ functions = "functions"
 publish = "public"
 
 [[redirects]]
-from = "/card.jpg"
+from = "/card"
 to = "/.netlify/functions/socialcard"
 status = 200
 
