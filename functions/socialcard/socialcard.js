@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
         color = '',
         size,
         theme = 'play',
+        font,
     } = event.queryStringParameters;
 
     let [ bgfrom, bgto ] = bg.split('_');
@@ -29,7 +30,7 @@ exports.handler = async (event, context) => {
     const { body } = await got( url );
     const $ = cheerio.load( body );
 
-    try {
+    // try {
         const resolved = path.resolve(__dirname, `./${theme}.html`)        
         let tmpl = fs.readFileSync( resolved, "utf8" );
         const view = dot.template(tmpl);
@@ -45,6 +46,7 @@ exports.handler = async (event, context) => {
             bgfrom: bgfrom, 
             colorto: colorto, 
             colorfrom: colorfrom, 
+            font: font, 
             domain: URL.parse(url).hostname 
         };
 
@@ -77,13 +79,13 @@ exports.handler = async (event, context) => {
             isBase64Encoded: true            
         }     
 
-    } catch (e) {
+    // } catch (e) {
 
-        return {
-            headers: { 'Content-Type':'application/json'},            
-            statusCode: 500,
-            body: JSON.stringify({ message: 'Error' }),   
-        }     
+    //     return {
+    //         headers: { 'Content-Type':'application/json'},            
+    //         statusCode: 500,
+    //         body: JSON.stringify({ message: 'Error' }),   
+    //     }     
 
-    }
+    // }
 }
