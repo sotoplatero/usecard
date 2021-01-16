@@ -3,7 +3,7 @@
 		<label for="email_address" class="block text-gray-700 font-semibold">{label}</label>
 	{/if}
 	<select bind:value={value} class="w-full">
-		{#each fonts as font}
+		{#each fonts.sort() as font}
 			<option value={font} class="">
 				{ font }
 			</option>
