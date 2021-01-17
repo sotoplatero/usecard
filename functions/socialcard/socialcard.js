@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
 
         const metas = { 
             title: $('title').first().text() , 
-            description: $('meta[name="description"],meta[property="description"],meta[property="og:description"],meta[name="twitter:description"]').attr('content'), 
+            description: $('meta[property="og:description"],meta[name="twitter:description"],meta[name="description"],meta[property="description"]').attr('content'), 
             date: $('meta[property*="updated_time" i],meta[property*="modified_time" i],meta[property*="published_time" i],meta[property*="release_date" i],meta[name="date" i],[itemprop*="datemodified" i],[itemprop="datepublished" i],[itemprop*="date" i]').attr('content'),            
             image: $('article img[src],#content img[src],img[src]').attr('src'),
             publisher: $('meta[property="og:site_name"],meta[name*="application-name" i],meta[property="al:android:app_name"],meta[property="al:iphone:app_name"],meta[property="al:ipad:app_name"],meta[name="publisher" i],meta[name="twitter:app:name:iphone"],meta[name="twitter:app:name:ipad"],meta[name="twitter:app:name:googleplay"]').attr('content'),
@@ -65,8 +65,8 @@ exports.handler = async (event, context) => {
         await page.setViewport({ width: 1536, height: 768 }); // relation 1/2
         await page.setContent( content ) ;
       
-        const card = await page.$('body');
-        const screenshot = await card.screenshot({ encoding: 'base64' });
+        // const card = await page.$('body');
+        const screenshot = await page.screenshot({ encoding: 'base64' });
         await browser.close();
 
         return {
