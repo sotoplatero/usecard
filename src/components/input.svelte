@@ -4,10 +4,9 @@
 	{/if}
 	<input 
 		type="text" 
-		name="email_address" 
-		id="email_address" 
+		name="url" 
+		id="url" 
 		bind:value={value}
-		placeholder=""
 		class="w-full"
 		on:focus={ e => e.target.select() }
 	>
