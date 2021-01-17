@@ -23,7 +23,7 @@
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = encodeURI(`/card?url=${url}&bg=${bg}&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
+  $: src = encodeURI(`/card?url=${url}${bg ?? '&bg=' + bg }&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
   $: src && (loading = true);
 
   function loader(img) {
@@ -68,7 +68,7 @@
       <div class="grid grid-cols-4 gap-2">
 
         <div class="col-span-4">
-          <InputText bind:value={url} label="URL"/>
+          <InputText bind:value={url} label="URL" />
         </div>
 
         <SelectTheme bind:value={theme} label="Theme"/>

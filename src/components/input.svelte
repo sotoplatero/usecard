@@ -9,6 +9,7 @@
 		bind:value={value}
 		placeholder=""
 		class="w-full"
+		on:focus={ e => e.target.select() }
 	>
 </div>
 
