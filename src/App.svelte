@@ -3,8 +3,8 @@
   import { toClipboard } from "copee";
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
-  import SelectTextSize from "./components/select-text-size.svelte";
   import SelectTheme from "./components/select-theme.svelte";
+  import SelectFont from "./components/select-font.svelte";
 
   let url = 'https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la';
   let loading = false;
@@ -17,12 +17,13 @@
   let colorTo = '';
   let pattern = '';
   let theme = 'play';
+  let font = 'play';
 
   let src;
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = encodeURI(`/card?url=${url}&bg=${bg}&color=${color}&theme=${theme}&size=${textSize}`)
+  $: src = encodeURI(`/card?url=${url}${bg ?? '&bg=' + bg }&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
   $: src && (loading = true);
 
   function loader(img) {
@@ -64,14 +65,15 @@
         <p class="text-lg">Generate the URL of the custom image. You can change the colors, create gradients and select the theme of your preference.</p>
       </div>
 
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-4 gap-2">
 
-        <div class="col-span-3">
-          <InputText bind:value={url} label="URL"/>
+        <div class="col-span-4">
+          <InputText bind:value={url} label="URL" />
         </div>
 
         <SelectTheme bind:value={theme} label="Theme"/>
 
+        <SelectFont bind:value={font} label="Font Family"/>
         <div>
             <label for="bgcolor" class="block font-semibold">Backgroud color</label>        
             <div class="grid grid-cols-2 gap-1">

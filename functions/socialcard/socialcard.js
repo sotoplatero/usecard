@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
         color = '',
         size,
         theme = 'play',
+        font,
     } = event.queryStringParameters;
 
     let [ bgfrom, bgto ] = bg.split('_');
@@ -29,14 +30,14 @@ exports.handler = async (event, context) => {
     const { body } = await got( url );
     const $ = cheerio.load( body );
 
-    try {
+    // try {
         const resolved = path.resolve(__dirname, `./${theme}.html`)        
         let tmpl = fs.readFileSync( resolved, "utf8" );
         const view = dot.template(tmpl);
 
         const metas = { 
             title: $('title').first().text() , 
-            description: $('meta[name="description"],meta[property="description"],meta[property="og:description"],meta[name="twitter:description"]').attr('content'), 
+            description: $('meta[property="og:description"],meta[name="twitter:description"],meta[name="description"],meta[property="description"]').attr('content'), 
             date: $('meta[property*="updated_time" i],meta[property*="modified_time" i],meta[property*="published_time" i],meta[property*="release_date" i],meta[name="date" i],[itemprop*="datemodified" i],[itemprop="datepublished" i],[itemprop*="date" i]').attr('content'),            
             image: $('article img[src],#content img[src],img[src]').attr('src'),
             publisher: $('meta[property="og:site_name"],meta[name*="application-name" i],meta[property="al:android:app_name"],meta[property="al:iphone:app_name"],meta[property="al:ipad:app_name"],meta[name="publisher" i],meta[name="twitter:app:name:iphone"],meta[name="twitter:app:name:ipad"],meta[name="twitter:app:name:googleplay"]').attr('content'),
@@ -45,6 +46,7 @@ exports.handler = async (event, context) => {
             bgfrom: bgfrom, 
             colorto: colorto, 
             colorfrom: colorfrom, 
+            font: font, 
             domain: URL.parse(url).hostname 
         };
 
@@ -63,8 +65,8 @@ exports.handler = async (event, context) => {
         await page.setViewport({ width: 1536, height: 768 }); // relation 1/2
         await page.setContent( content ) ;
       
-        const card = await page.$('body');
-        const screenshot = await card.screenshot({ encoding: 'base64' });
+        // const card = await page.$('body');
+        const screenshot = await page.screenshot({ encoding: 'base64' });
         await browser.close();
 
         return {
@@ -77,13 +79,13 @@ exports.handler = async (event, context) => {
             isBase64Encoded: true            
         }     
 
-    } catch (e) {
+    // } catch (e) {
 
-        return {
-            headers: { 'Content-Type':'application/json'},            
-            statusCode: 500,
-            body: JSON.stringify({ message: 'Error' }),   
-        }     
+    //     return {
+    //         headers: { 'Content-Type':'application/json'},            
+    //         statusCode: 500,
+    //         body: JSON.stringify({ message: 'Error' }),   
+    //     }     
 
-    }
+    // }
 }
