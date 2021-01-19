@@ -16,7 +16,7 @@
   let colorFrom = '';
   let colorTo = '';
   let pattern = '';
-  let theme = 'play';
+  let theme = $themes[ Math.floor(Math.random() * $themes.length) ];
   let font = '';
 
   let src;
@@ -38,14 +38,14 @@
     <h1 class="text-4xl md:text-5xl text-dark-blue-800 font-bold" >
         <span class="text-red-600">USECARD</span><br> Auto Social Image
     </h1>
-    <div class="max-w-2xl mx-auto pt-8 text-xl text-gray-700 leading-relaxed space-y-6">
+    <div class="max-w-2xl mx-auto pt-8 text-2xl text-gray-600 leading-relaxed space-y-6">
       <p >
           Generator of social meta images with 0 configuration. You no longer have to waste time creating images. 
       </p>
-      <p >
+<!--       <p >
        An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
         Ex. <a href="/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la</a>
-      </p>
+      </p> -->
       
     </div>
     <div class="mt-10">
