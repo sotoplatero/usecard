@@ -21,21 +21,24 @@
 
   let font = '';
   let src;
+
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
   $: {
-    src = `/card.jpg?url=${url}&theme=${theme}`;
+    src = `/card?url=${url}&theme=${theme}`;
     src += bg ? `&bg=${bg}` : '';
     src += color ? `&color=${color}` : '';
     src += font ? `&font=${font}` : '';
     encodeURI(src);
   }
+
   $: src && (loading = true);
 
   function loader(img) {
     img.onload = () => (loading = false);
   }
+
 </script>
 
 <!-- Note: "class:dark" is equivalent (and short for) "class:dark={dark}" or "class:dark={dark === true}" -->
@@ -118,7 +121,7 @@
         </a>
       </div>
 
-      <div class="py-3 px-4 flex items-center text-gray-500 space-x-2">
+      <div class="py-3 flex items-center text-gray-500 space-x-2">
         <!-- <span>http://usecard.netlify.app{src}</span>  -->
         <button 
           on:click="{toClipboard( 'http://usecard.netlify.app' + src ) }" 
@@ -130,7 +133,7 @@
           <svg class="h-6 w-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
           </svg>
-          URL
+          Copy URL
         </button>
 
 <!--         <button
@@ -145,12 +148,12 @@
           Meta Tag         
         </button> -->
 
-        <a href="{src}" download="card.jpg">
+<!--         <a href="{src}" download="card.jpg">
           <svg class="h-6 w-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
           </svg> 
           Download      
-        </a>
+        </a> -->
       </div>
   </main>
 
