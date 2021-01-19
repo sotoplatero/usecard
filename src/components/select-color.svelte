@@ -1,13 +1,19 @@
 <div class="w-full">
 	<select 
 		bind:value={value} 
-		class="w-full" 
+		class="w-full text-center" 
 		style="background-color: {bgColor};" 
 		name={name}
 	>
 		<option></option>
 		{#each colors as color}
-			<option value={color[1]} style="background-color: {color[0]};">&nbsp;</option>
+			<option 
+				value={color[1]} 
+				style="background-color: {color[0]};"
+				class="text-center"
+			>
+				{color[1]}
+			</option>
 		{/each}
 	</select>
 </div>

@@ -52,4 +52,4 @@ const fonts = readable([
 	'Merriweather' 
 ]); // dark mode
 
-export { dark, themes };
+export { dark, themes, fonts };

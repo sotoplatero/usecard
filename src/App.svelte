@@ -3,9 +3,8 @@
   import { themes, fonts } from "./store"; // dark mode
   import { toClipboard } from "copee";
   import InputText from "./components/input.svelte"; 
-  import SelectColor from "./components/select-color.svelte";
   import SelectOptions from "./components/select-options.svelte";
-  import SelectFont from "./components/select-font.svelte";
+  import SelectColor from "./components/select-color.svelte";
 
   let url = 'https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la';
   let loading = false;
