@@ -12,7 +12,7 @@
 				style="background-color: {color[0]};"
 				class="text-center"
 			>
-				{color[1]}
+				&nbsp;
 			</option>
 		{/each}
 	</select>

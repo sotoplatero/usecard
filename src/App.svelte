@@ -24,7 +24,13 @@
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = encodeURI(`/card?url=${url}&bg=${bg}&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
+  $: {
+    src = `/card?url=${url}&theme=${theme}`;
+    src += bg ? `&bg=${bg}` : '';
+    src += color ? `&color=${color}` : '';
+    src += font ? `&font=${font}` : '';
+    encodeURI(src);
+  }
   $: src && (loading = true);
 
   function loader(img) {
@@ -41,12 +47,9 @@
     </h1>
     <div class="max-w-2xl mx-auto pt-8 text-2xl text-gray-600 leading-relaxed space-y-6">
       <p >
-          Generate a social image for each page of your site using the url parameters. Fast and easy !! 
+          Generate a social image for each page of your site using the url parameters. Fast and easy !! <br>
+          <span class="text-lg font-semibold text-gray-500">You no longer have to waste time creating images.</span>
       </p>
-<!--       <p >
-       An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
-        Ex. <a href="/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la" class="bg-gray-100 text-blue-600 text-xl" target="_blank">https://usecard.netlify.app/card?url=https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la</a>
-      </p> -->
       
     </div>
     <div class="mt-10">
@@ -116,11 +119,26 @@
       </div>
 
       <div class="py-3 px-4 bg-gray-100 rounded-lg flex items-center text-gray-500">
-        <span>http://usecard.netlify.app{src}</span> 
+        <!-- <span>http://usecard.netlify.app{src}</span>  -->
         <button on:click="{toClipboard( 'http://usecard.netlify.app' + src ) }" class="hover:text-gray-800">
           <svg class="h-6 w-6 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
           </svg>
+          URL
+        </button>
+
+        <button>
+          <svg class="h-6 w-6 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg> 
+          Meta Tag         
+        </button>
+
+        <button>
+          <svg class="h-6 w-6 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+          </svg> 
+          Download      
         </button>
       </div>
   </main>
