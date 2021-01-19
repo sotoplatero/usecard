@@ -22,6 +22,8 @@
 	export let value, name ;
 
 	let colors = [
+		['#FFFFFF','white'],
+		['#000000','black'],
 		['#F9FAFB','gray-50'],
 		['#F3F4F6','gray-100'],
 		['#E5E7EB','gray-200'],
