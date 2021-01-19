@@ -17,53 +17,49 @@
         w-screen 
         flex 
         items-center 
-        justify-center
+        content-center
         text-center
         bg-gradient-to-r 
         from-{{= it.bgfrom || 'white'}} 
         to-{{= it.bgto || 'white'}} 
     ">
-        <div class="h-full relative" >
 
-            <!-- <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div> -->
+        <div class="p-24 w-full">
 
-            <div class="relative p-24 w-full">
 
-                <div class="flex items-center justify-center text-2xl mt-10 mb-6 font-bold">
-                    <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-10 w-10 mr-4" >
+            <h1 class="
+                text-{{= it.size || '6xl' }} 
+                text-center 
+                font-bold 
+                leading-normal
+                border-8    
+                border-black
+                bg-white
+                p-6
+            ">
+                <span 
+                    class="
+                        bg-clip-text 
+                        text-transparent 
+                        bg-gradient-to-r 
+                        from-{{= it.colorfrom || 'gray-900' }} 
+                        to-{{= it.colorto || 'gray-900' }}"
+                    >
+                    {{= it.title}}
+                </span>
+                <div class="text-3xl font-bold mt-8">
+                    <!-- <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-10 w-10 mr-4 inline-block" > -->
                     {{= it.publisher || it.domain}}
                 </div>
+            </h1>
 
-                <h1 class="
-                    text-{{= it.size || '6xl' }} 
-                    text-center 
-                    font-bold 
-                    leading-normal
-                    border-8    
-                    border-black
-                    bg-white
-                    p-6
-                ">
-                    <span 
-                        class="
-                            bg-clip-text 
-                            text-transparent 
-                            bg-gradient-to-r 
-                            from-{{= it.colorfrom || 'gray-900' }} 
-                            to-{{= it.colorto || 'gray-900' }}"
-                        >
-                        {{= it.title}}
-                    </span>
-                </h1>
-
-                <div 
-                    style="background-color: #FFFF00;"
-                    class="text-4xl font-bold p-6 mt-6 border-8    
-                    border-black"
-                >
-                    {{= it.description }}
-                </div>
+            <div 
+                style="background-color: #FFFF00;"
+                class="text-4xl font-bold p-6 mt-6 border-8    
+                border-black leading-snug"
+            >
+                {{= it.description }}
             </div>
-        </div>        
+        </div>
     </body>
 </html>

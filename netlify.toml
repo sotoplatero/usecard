@@ -12,6 +12,11 @@ to = "/.netlify/functions/card"
 status = 200
 
 [[redirects]]
+from = "/card.jpg"
+to = "/.netlify/functions/card"
+status = 200
+
+[[redirects]]
 from = "/api/*"
 to = "/.netlify/functions/:splat"
 status = 200
