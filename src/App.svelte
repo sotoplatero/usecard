@@ -1,9 +1,10 @@
 <script>
   // import { dark, theme } from "./store"; // dark mode
+  import { themes, fonts } from "./store"; // dark mode
   import { toClipboard } from "copee";
   import InputText from "./components/input.svelte"; 
   import SelectColor from "./components/select-color.svelte";
-  import SelectTheme from "./components/select-theme.svelte";
+  import SelectOptions from "./components/select-options.svelte";
   import SelectFont from "./components/select-font.svelte";
 
   let url = 'https://dev.to/ranaemad/make-your-website-social-media-card-able-on-twitter-facebook-and-more-35la';
@@ -17,7 +18,7 @@
   let colorTo = '';
   let pattern = '';
   let theme = 'play';
-  let font = 'play';
+  let font = '';
 
   let src;
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
@@ -71,9 +72,18 @@
           <InputText bind:value={url} label="URL" />
         </div>
 
-        <SelectTheme bind:value={theme} label="Theme"/>
+        <SelectOptions 
+          bind:value={theme} 
+          options={$themes} 
+          label="Theme"
+        />
 
-        <SelectFont bind:value={font} label="Font Family"/>
+        <SelectOptions 
+          bind:value={font} 
+          options={$fonts} 
+          label="Font Family"
+        />
+
         <div>
             <label for="bgcolor" class="block font-semibold">Backgroud color</label>        
             <div class="grid grid-cols-2 gap-1">
@@ -117,7 +127,7 @@
 
   <footer class="my-8 text-center">
       Made with &#9995; and &#128147; at &#127968; by <a href="https://twitter.com/sotoplatero" class="text-blue-500">@sotoplatero</a><br>
-      <a href="https://clearbit.com" target="_black" rel="noreferer noopnener" class="text-sm text-gray-500">Logos provided by Clearbit</a> 
+      <a href="https://unavatar.now.sh/" target="_black" rel="noreferer noopnener" class="text-sm text-gray-500">Thank to unavatar by @Kikobeats</a> 
   </footer>
 
 </div>

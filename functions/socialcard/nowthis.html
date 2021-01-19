@@ -27,13 +27,20 @@
 
             <!-- <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div> -->
 
-            <div class="relative p-24 bg-white rounded-3xl">
+            <div class="relative p-24 bg-white w-full">
+
+                <div class="flex items-center justify-center text-2xl mt-10 mb-6 font-bold">
+                    <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-10 w-10 mr-4" >
+                    {{= it.publisher || it.domain}}
+                </div>
 
                 <h1 class="
                     text-{{= it.size || '6xl' }} 
                     text-center 
                     font-bold 
                     leading-normal
+                    border-8    
+                    border-black
                 ">
                     <span 
                         class="
@@ -47,15 +54,13 @@
                     </span>
                 </h1>
 
-                {{? it.description }}
-                    <p class="text-4xl text-gray-600 mt-8 line-clamp">{{=it.description}}</p>
-                {{?}}
-
-                <div class="flex items-center justify-center text-4xl mt-10">
-                    <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-12 w-12" >
-                    {{= it.publisher || it.domain}}
+                <div 
+                    style="background-color: #FFFF00;"
+                    class="text-4xl font-bold  py-4 px-6 mt-6 border-8    
+                    border-black"
+                >
+                    {{= it.description }}
                 </div>
-
             </div>
         </div>        
     </body>
