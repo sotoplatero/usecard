@@ -15,24 +15,22 @@
     <body class="
         h-screen 
         w-screen 
-        flex 
-        items-center 
-        justify-center
         text-center
     ">
         <div class="h-full relative" >
 
             <h1 class="
                 h-1/2
+                w-full
                 flex
                 items-center                
-                text-{{= it.size || '6xl' }} 
+                text-6xl
                 text-center 
                 font-bold 
                 leading-normal
                 bg-{{= it.bgfrom || 'black' }} 
                 text-{{= it.colorfrom || 'white'}}               
-                p-6
+                p-6 px-32
             ">
                 <div class="w-full text-center">
                     {{= it.title}}
@@ -45,14 +43,16 @@
             <div 
                 class="
                     h-1/2
+                    w-full
                     flex
                     items-center
+                    justify-center
                     leading-normal
-                    text-5xl font-bold p-6 px-24     
+                    text-5xl font-bold p-6 px-28     
                     bg-{{= it.bgto || 'white' }}   
                     text-{{= it.colorto || 'black'}}             
                 "
-            >
+            >   
                 {{= it.description }}
             </div>
         </div>        

@@ -16,9 +16,10 @@
   let colorFrom = '';
   let colorTo = '';
   let pattern = '';
-  let theme = $themes[ Math.floor(Math.random() * $themes.length) ];
-  let font = '';
 
+  let theme = $themes[ Math.floor(Math.random() * $themes.length) ];
+
+  let font = '';
   let src;
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
@@ -40,7 +41,7 @@
     </h1>
     <div class="max-w-2xl mx-auto pt-8 text-2xl text-gray-600 leading-relaxed space-y-6">
       <p >
-          Generator of social meta images with 0 configuration. You no longer have to waste time creating images. 
+          Generate a social image for each page of your site using the url parameters. Fast and easy !! 
       </p>
 <!--       <p >
        An image for each web page, only indicates the url parameter and set <code class="bg-gray-100">og:image</code> and <code class="bg-gray-100">twitter:image</code><br>
