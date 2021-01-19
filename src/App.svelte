@@ -23,7 +23,7 @@
   $: if (bgFrom && bgTo) bg = bgFrom + '_' + bgTo;
   $: if ( colorFrom && colorTo) color = colorFrom + '_' + colorTo;
 
-  $: src = encodeURI(`/card?url=${url}${bg ?? '&bg=' + bg }&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
+  $: src = encodeURI(`/card?url=${url}&bg=${bg}&color=${color}&theme=${theme}&font=${font}&size=${textSize}`)
   $: src && (loading = true);
 
   function loader(img) {

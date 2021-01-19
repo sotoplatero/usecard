@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     {{? it.font}}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{= it.font}}:bi">  
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{= it.font}}">  
         <style type="text/css">
             html {
                 font-family: {{= it.font }}, sans-serif;            
@@ -20,14 +20,14 @@
         justify-center
         text-center
         bg-gradient-to-r 
-        from-{{= it.bgfrom || 'gray-800'}} 
-        to-{{= it.bgto || 'gray-800'}} 
+        from-{{= it.bgfrom || 'white'}} 
+        to-{{= it.bgto || 'white'}} 
     ">
-        <div class="my-16 mx-32  relative" >
+        <div class="h-full relative" >
 
             <!-- <div class="absolute inset-0 bg-black shadow-lg transform translate-x-4 translate-y-4"></div> -->
 
-            <div class="relative p-24 bg-white w-full">
+            <div class="relative p-24 w-full">
 
                 <div class="flex items-center justify-center text-2xl mt-10 mb-6 font-bold">
                     <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-10 w-10 mr-4" >
@@ -41,6 +41,7 @@
                     leading-normal
                     border-8    
                     border-black
+                    p-6
                 ">
                     <span 
                         class="
@@ -56,7 +57,7 @@
 
                 <div 
                     style="background-color: #FFFF00;"
-                    class="text-4xl font-bold  py-4 px-6 mt-6 border-8    
+                    class="text-4xl font-bold p-6 mt-6 border-8    
                     border-black"
                 >
                     {{= it.description }}
