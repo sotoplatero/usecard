@@ -18,13 +18,13 @@ const metascraper = require('metascraper')([
   require('metascraper-url')(),
 ])
 
-const localChrome = process.env.PATH_CHROME;
+const localChrome = process.env.PATH_CHROME
 
-export default async ( req, res ) => {
+exports.handler = async (event) => {
 
     const {
-        query: { url, bg = '', color = '', theme = 'play', font },
-    } = req
+        url, bg = '', color = '', theme = 'play', font,
+    } = event.queryStringParameters
 
     let [ bgfrom, bgto ] = bg.split('_') ;
     let [ colorfrom, colorto ] = color.split('_');
@@ -38,7 +38,7 @@ export default async ( req, res ) => {
       const { body: html } = await got(url)
       metadata = await metascraper({ html, url })
 
-    try {
+    // try {
         const resolved = path.resolve(__dirname, `./themes/${theme}.html`)        
         let tmpl = fs.readFileSync( resolved, "utf8" );
         const view = dot.template(tmpl);
@@ -67,30 +67,29 @@ export default async ( req, res ) => {
         await page.setContent( content ) ;
       
         // const card = await page.$('body');
-        const screenshot = await page.screenshot();
+        const screenshot = await page.screenshot({ encoding: 'base64' });
         await browser.close();
 
-        res.setHeader('Content-Type', `image/jpg`);
+        // res.setHeader('Content-Type', `image/jpg`);
         // res.setHeader('Cache-Control', `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`);
-        res.status(200).send(screenshot);;
+        // res.status(200).send(screenshot);;
 
-        // return {
-        //     statusCode: 200,
-        //     headers: { 
-        //     	'Content-type': 'image/jpeg', 
-        //         'Cache-Control': 'no-store',
-        //     },
-        //     body: screenshot,   
-        //     isBase64Encoded: true            
-        // }     
-
-    } catch (e) {
-        console.log(e)
         return {
-            headers: { 'Content-Type':'application/json'},            
-            statusCode: 500,
-            body: JSON.stringify({ message: 'Error' }),   
+            statusCode: 200,
+            headers: { 
+            	'Content-type': 'image/png', 
+                'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000',
+            },
+            body: screenshot,   
+            isBase64Encoded: true            
         }     
 
-    }
+    // } catch (e) {
+    //     return {
+    //         headers: { 'Content-Type':'application/json'},            
+    //         statusCode: 500,
+    //         body: JSON.stringify({ message: 'Error' }),   
+    //     }     
+
+    // }
 }

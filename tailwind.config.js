@@ -1,6 +1,7 @@
 const production = !process.env.ROLLUP_WATCH;
 const colors = require('tailwindcss/colors')
 module.exports = {
+    mode: 'jit',
     purge: {
         enabled: production,
         content: [

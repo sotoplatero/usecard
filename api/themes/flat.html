@@ -43,9 +43,9 @@
                         to-{{= it.colorto || 'white' }}">
                         {{= it.title}}
                     </div>
-                    <div class="flex items-center justify-center text-3xl mt-8 text-white">
+                    <div class="flex items-center justify-center text-4xl mt-8 text-white">
                         <img src="https://unavatar.now.sh/{{=it.domain}}" class="h-14 w-14 rounded-lg mr-4" >
-                        {{= it.publisher || it.domain }}
+                        {{= it.author || it.publisher || it.domain }}
                     </div>
                 </div>
             </h1>

@@ -20,7 +20,7 @@
         "rollup-plugin-svelte": "^7.0",
         "rollup-plugin-terser": "^7.0.0",
         "svelte": "^3.31",
-        "tailwindcss": "^2.0.2"
+        "tailwindcss": "^2.1"
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.5",
@@ -39,9 +39,10 @@
         "metascraper-title": "^5.16.13",
         "metascraper-url": "^5.16.13",
         "puppeteer-core": "^5.5.0",
-        "sirv-cli": "^1.0.0"
+        "sirv-cli": "^1.0.0",
+        "xss": "^1.0.8"
     },
     "engines": {
         "node": "14.x"
-    }    
+    }
 }
