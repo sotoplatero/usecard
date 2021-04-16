@@ -6,6 +6,7 @@
 		type="text" 
 		name="url" 
 		id="url" 
+		{placeholder}
 		bind:value={value}
 		class="w-full"
 		on:focus={ e => e.target.select() }
