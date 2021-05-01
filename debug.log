@@ -2,3 +2,9 @@
 [0113/071909.070:ERROR:process_info.cc(359)] UncheckedAllocate
 [0113/071926.971:ERROR:process_info.cc(359)] UncheckedAllocate
 [0113/071926.990:ERROR:process_info.cc(359)] UncheckedAllocate
+[0429/220123.436:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports
+[0429/220130.732:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports
+[0429/220207.577:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports
+[0429/224756.254:ERROR:file_io_win.cc(162)] CreateFile C:\Users\soto\AppData\Local\Temp\puppeteer_dev_chrome_profile-ujpKF6\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
+[0429/224756.256:ERROR:file_io_win.cc(171)] CreateFile C:\Users\soto\AppData\Local\Temp\puppeteer_dev_chrome_profile-ujpKF6\Crashpad\reports\8bf58cbf-6506-4321-819c-4241d556de24.dmp: The system cannot find the path specified. (0x3)
+[0429/224756.256:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed

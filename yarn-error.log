@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add konva-node
 
 PATH: 
   C:\Users\soto\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\soto\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\bin\curl_7_50_1_openssl_nghttp2_x64;C:\bin\PortableGit\bin;C:\bin\mongodb\bin;C:\bin\DevKit\bin;C:\bin\rubyinstaller-2.5.0-1-x64\bin;C:\bin\laragon\bin\cmder;C:\ProgramData\chocolatey\bin;C:\WINDOWS\System32\OpenSSH;C:\HashiCorp\Vagrant\bin;C:\Program Files (x86)\Yarn\bin;C:\bin\composer;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\bin\PortableGit\bin;C:\bin\PortableGit\usr\bin;C:\bin\laragon\bin;C:\bin\laragon\bin\apache\httpd-2.4.25-win64-VC14\bin;C:\bin\laragon\bin\git\bin;C:\bin\laragon\bin\git\cmd;C:\bin\laragon\bin\git\mingw64\bin;C:\bin\laragon\bin\laragon\utils;C:\bin\laragon\bin\mysql\mysql-5.7.18-winx64\bin;C:\bin\laragon\bin\nginx\nginx-1.12.0;C:\bin\laragon\bin\ngrok;C:\bin\laragon\bin\notepad++;C:\bin\laragon\bin\php\php-7.4.0-nts-Win32-vc15-x64;C:\bin\laragon\bin\putty;C:\bin\laragon\bin\redis\redis-x64-3.2.100;C:\bin\laragon\bin\telnet;C:\bin\laragon\bin\yarn\bin;C:\bin\laragon\usr\bin;C:\Users\soto\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\soto\AppData\Roaming\Composer\vendor\bin;C:\Users\soto\AppData\Local\Microsoft\WindowsApps;C:\Users\soto\AppData\Local\.meteor;C:\Users\soto\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\soto\Homestead;C:\Users\soto\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\soto\AppData\Local\Yarn\bin;C:\Users\soto\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,12 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: Client network socket disconnected before secure TLS connection was established
-      at connResetException (internal/errors.js:607:14)
-      at TLSSocket.onConnectEnd (_tls_wrap.js:1544:19)
-      at TLSSocket.emit (events.js:327:22)
-      at endReadableNT (internal/streams/readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
 
 npm manifest: 
   {
@@ -27,7 +23,7 @@ npm manifest:
       "version": "1.0.0",
       "license": "MIT",
       "scripts": {
-          "build": "rollup -c",
+          "build": "rollup -c ",
           "dev": "rollup -c -w",
           "start": "sirv public"
       },
@@ -3616,7 +3612,7 @@ Lockfile:
       unquote "~1.1.1"
       util.promisify "~1.0.0"
   
-  tailwindcss@^2.1:
+  tailwindcss@^2.0.3:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.1.1.tgz#642f6038c9283a8e1454da34585b8b7c1a1e8877"
     integrity sha512-zZ6axGqpSZOCBS7wITm/WNHkBzDt5CIZlDlx0eCVldwTxFPELCVGbgh7Xpb3/kZp3cUxOmK7bZUjqhuMrbN6xQ==
